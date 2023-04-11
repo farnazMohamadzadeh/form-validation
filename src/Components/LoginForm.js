@@ -1,4 +1,9 @@
 import React from "react";
+import {
+  maxValidator,
+  minValidator,
+  requireValidator,
+} from "../Validators/rules";
 import { Input } from "./Input";
 
 export const LoginForm = () => {
@@ -20,16 +25,26 @@ export const LoginForm = () => {
                   className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                   placeholder="Email address"
                   label="Email Address"
+                  validations={[
+                    requireValidator(),
+                    minValidator(6),
+                    maxValidator(10),
+                  ]}
                 />
                 <Input
                   id="password"
                   name="password"
                   type="password"
-                  className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
+                  className="peer placeholder-transparent h-10 w-full border-b-2  text-gray-900 focus:outline-none focus:borer-rose-600"
                   placeholder="Password"
                   label="Password"
+                  validations={[
+                    requireValidator(),
+                    minValidator(6),
+                    maxValidator(10),
+                  ]}
                 />
-                
+
                 <div class="relative">
                   <button class="bg-blue-500 text-white rounded-md px-2 py-1">
                     Submit
