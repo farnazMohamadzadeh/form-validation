@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { validator } from "../Validators/Validator";
 
 const inputReducer = (state, action) => {
@@ -24,6 +24,7 @@ export const Input = ({
   placeholder,
   label,
   validations,
+  onInputHandler
 }) => {
   const [formInput, dispatch] = useReducer(inputReducer, {
     value: "",
@@ -31,16 +32,18 @@ export const Input = ({
   });
 
   const changeHandler = (event) => {
-    console.log(event.target.value);
     dispatch({
       type: "CHANGE",
       value: event.target.value,
       validations,
     });
   };
-
+  const {value, isValid}= formInput
+useEffect(() => {
+  onInputHandler(id, value, isValid)
+}, [value])
   return (
-    <div class="relative">
+    <div className="relative">
       <input
         id={id}
         name={name}

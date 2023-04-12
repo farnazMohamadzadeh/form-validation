@@ -1,7 +1,7 @@
 import rules from "./rules";
 
 export const validator = (value, validations) => {
-  console.log(value, validations);
+ 
   let validationResult = [];
   for (const validation of validations) {
     if (validation.value === rules.requireValue) {
